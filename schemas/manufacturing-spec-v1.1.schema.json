@@ -1,0 +1,443 @@
+{
+  "$defs": {
+    "Coordinates": {
+      "additionalProperties": false,
+      "properties": {
+        "units": {
+          "const": "mm",
+          "default": "mm",
+          "title": "Units",
+          "type": "string"
+        },
+        "origin": {
+          "const": "centre_of_start_face",
+          "default": "centre_of_start_face",
+          "title": "Origin",
+          "type": "string"
+        },
+        "x": {
+          "const": "length",
+          "default": "length",
+          "title": "X",
+          "type": "string"
+        },
+        "y": {
+          "const": "width",
+          "default": "width",
+          "title": "Y",
+          "type": "string"
+        },
+        "z": {
+          "const": "thickness; sleeve slit on +z",
+          "default": "thickness; sleeve slit on +z",
+          "title": "Z",
+          "type": "string"
+        }
+      },
+      "title": "Coordinates",
+      "type": "object"
+    },
+    "Measurement": {
+      "additionalProperties": false,
+      "properties": {
+        "value_mm": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value Mm"
+        },
+        "sigma_mm": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sigma Mm"
+        },
+        "status": {
+          "enum": [
+            "unknown",
+            "estimated",
+            "cross_checked",
+            "physically_verified",
+            "conflict"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "sources": {
+          "items": {
+            "enum": [
+              "photo_on_sheet",
+              "paper_strip",
+              "manual_ruler",
+              "manual_caliper",
+              "fit_coupon"
+            ],
+            "type": "string"
+          },
+          "title": "Sources",
+          "type": "array"
+        },
+        "confirmed_by_user": {
+          "default": false,
+          "title": "Confirmed By User",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "Measurement",
+      "type": "object"
+    },
+    "Mounting": {
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "const": "through_bolt_and_nut",
+          "default": "through_bolt_and_nut",
+          "title": "Method",
+          "type": "string"
+        },
+        "bolt_diameter_mm": {
+          "exclusiveMinimum": 0,
+          "maximum": 8,
+          "title": "Bolt Diameter Mm",
+          "type": "number"
+        },
+        "face_thickness_mm": {
+          "exclusiveMinimum": 0,
+          "maximum": 50,
+          "title": "Face Thickness Mm",
+          "type": "number"
+        },
+        "bolt_length_mm": {
+          "exclusiveMinimum": 0,
+          "maximum": 150,
+          "title": "Bolt Length Mm",
+          "type": "number"
+        },
+        "nut_height_mm": {
+          "exclusiveMinimum": 0,
+          "maximum": 15,
+          "title": "Nut Height Mm",
+          "type": "number"
+        },
+        "confirmed_by_user": {
+          "const": true,
+          "title": "Confirmed By User",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "bolt_diameter_mm",
+        "face_thickness_mm",
+        "bolt_length_mm",
+        "nut_height_mm",
+        "confirmed_by_user"
+      ],
+      "title": "Mounting",
+      "type": "object"
+    },
+    "PullParameters": {
+      "additionalProperties": false,
+      "properties": {
+        "family": {
+          "const": "drawer_pull_bar",
+          "default": "drawer_pull_bar",
+          "title": "Family",
+          "type": "string"
+        },
+        "hole_spacing_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Hole Spacing Mm",
+          "type": "number"
+        },
+        "hole_diameter_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Hole Diameter Mm",
+          "type": "number"
+        },
+        "boss_diameter_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Boss Diameter Mm",
+          "type": "number"
+        },
+        "bar_length_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Bar Length Mm",
+          "type": "number"
+        },
+        "bar_width_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Bar Width Mm",
+          "type": "number"
+        },
+        "bar_height_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Bar Height Mm",
+          "type": "number"
+        },
+        "standoff_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Standoff Mm",
+          "type": "number"
+        }
+      },
+      "required": [
+        "hole_spacing_mm",
+        "hole_diameter_mm",
+        "boss_diameter_mm",
+        "bar_length_mm",
+        "bar_width_mm",
+        "bar_height_mm",
+        "standoff_mm"
+      ],
+      "title": "PullParameters",
+      "type": "object"
+    },
+    "SleeveParameters": {
+      "additionalProperties": false,
+      "properties": {
+        "family": {
+          "const": "grip_sleeve",
+          "default": "grip_sleeve",
+          "title": "Family",
+          "type": "string"
+        },
+        "inner_width_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Inner Width Mm",
+          "type": "number"
+        },
+        "inner_thickness_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Inner Thickness Mm",
+          "type": "number"
+        },
+        "outer_width_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Outer Width Mm",
+          "type": "number"
+        },
+        "outer_thickness_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Outer Thickness Mm",
+          "type": "number"
+        },
+        "length_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Length Mm",
+          "type": "number"
+        },
+        "wall_min_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Wall Min Mm",
+          "type": "number"
+        },
+        "clearance_mm": {
+          "minimum": 0,
+          "title": "Clearance Mm",
+          "type": "number"
+        },
+        "slit_width_mm": {
+          "exclusiveMinimum": 0,
+          "title": "Slit Width Mm",
+          "type": "number"
+        }
+      },
+      "required": [
+        "inner_width_mm",
+        "inner_thickness_mm",
+        "outer_width_mm",
+        "outer_thickness_mm",
+        "length_mm",
+        "wall_min_mm",
+        "clearance_mm",
+        "slit_width_mm"
+      ],
+      "title": "SleeveParameters",
+      "type": "object"
+    },
+    "Track": {
+      "enum": [
+        "adapt",
+        "repair"
+      ],
+      "title": "Track",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.1.0",
+      "default": "1.1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "design_id": {
+      "title": "Design Id",
+      "type": "string"
+    },
+    "parent_design_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Design Id"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "example": {
+      "default": false,
+      "title": "Example",
+      "type": "boolean"
+    },
+    "track": {
+      "$ref": "#/$defs/Track"
+    },
+    "object_type": {
+      "enum": [
+        "spoon",
+        "fork",
+        "knife",
+        "drawer_handle"
+      ],
+      "title": "Object Type",
+      "type": "string"
+    },
+    "object_confirmed": {
+      "title": "Object Confirmed",
+      "type": "boolean"
+    },
+    "difficulty": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Difficulty",
+      "type": "string"
+    },
+    "parameters": {
+      "discriminator": {
+        "mapping": {
+          "drawer_pull_bar": "#/$defs/PullParameters",
+          "grip_sleeve": "#/$defs/SleeveParameters"
+        },
+        "propertyName": "family"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/SleeveParameters"
+        },
+        {
+          "$ref": "#/$defs/PullParameters"
+        }
+      ],
+      "title": "Parameters"
+    },
+    "measurements": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Measurement"
+      },
+      "title": "Measurements",
+      "type": "object"
+    },
+    "coordinate_system": {
+      "$ref": "#/$defs/Coordinates"
+    },
+    "verification_level": {
+      "enum": [
+        "concept",
+        "dimensionally_estimated",
+        "dimensionally_cross_checked",
+        "physically_verified"
+      ],
+      "title": "Verification Level",
+      "type": "string"
+    },
+    "disclaimers": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Disclaimers",
+      "type": "array"
+    },
+    "variant": {
+      "enum": [
+        "compact",
+        "balanced",
+        "large"
+      ],
+      "title": "Variant",
+      "type": "string"
+    },
+    "material": {
+      "enum": [
+        "TPU",
+        "PETG",
+        "PLA"
+      ],
+      "title": "Material",
+      "type": "string"
+    },
+    "cross_section": {
+      "enum": [
+        "round",
+        "oval",
+        "flat",
+        "unknown"
+      ],
+      "title": "Cross Section",
+      "type": "string"
+    },
+    "mounting": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Mounting"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "design_id",
+    "track",
+    "object_type",
+    "object_confirmed",
+    "difficulty",
+    "parameters",
+    "measurements",
+    "verification_level",
+    "disclaimers",
+    "variant",
+    "material",
+    "cross_section"
+  ],
+  "title": "ManufacturingSpec",
+  "type": "object"
+}

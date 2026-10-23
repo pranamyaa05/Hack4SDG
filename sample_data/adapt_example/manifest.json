@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0.0",
+  "example": true,
+  "spec_file": "design_spec.json",
+  "spec_hash": "sha256:1a4c0257258139b9f8edc6c4f780ad9290218cd13df3164e00aa38cedfbddb58",
+  "artifacts": [],
+  "note": "Contract fixture only; no geometry or physical evidence."
+}

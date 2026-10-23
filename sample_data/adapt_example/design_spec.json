@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "design_id": "example_adapt_001",
+  "parent_design_id": null,
+  "created_at": "2026-10-23T00:00:00Z",
+  "example": true,
+  "track": "adapt",
+  "object_type": "spoon",
+  "object_confirmed": true,
+  "difficulty": "Illustrative grip difficulty",
+  "parameters": {
+    "family": "grip_sleeve",
+    "inner_width_mm": 14.4,
+    "inner_thickness_mm": 7.4,
+    "outer_width_mm": 30.0,
+    "outer_thickness_mm": 26.0,
+    "length_mm": 100.0,
+    "wall_min_mm": 2.4,
+    "clearance_mm": 0.4,
+    "slit_width_mm": 1.6
+  },
+  "measurements": {
+    "handle_width": {
+      "value_mm": 14.0,
+      "sigma_mm": 0.5,
+      "status": "estimated",
+      "sources": [
+        "manual_ruler"
+      ],
+      "confirmed_by_user": true
+    },
+    "handle_thickness": {
+      "value_mm": 7.0,
+      "sigma_mm": 0.5,
+      "status": "estimated",
+      "sources": [
+        "manual_ruler"
+      ],
+      "confirmed_by_user": true
+    },
+    "covered_length": {
+      "value_mm": 100.0,
+      "sigma_mm": 0.5,
+      "status": "estimated",
+      "sources": [
+        "manual_ruler"
+      ],
+      "confirmed_by_user": true
+    }
+  },
+  "coordinate_system": {
+    "units": "mm",
+    "origin": "centre_of_start_face",
+    "x": "length",
+    "y": "width",
+    "z": "thickness; sleeve slit on +z"
+  },
+  "verification_level": "dimensionally_estimated",
+  "disclaimers": [
+    "ILLUSTRATIVE FIXTURE: not measured, fabricated, or physically verified.",
+    "Not a medical device. Consult an occupational therapist.",
+    "Handle-only adaptation; printed plastics are not food-safe by default.",
+    "Drawer pull designs are light-duty; load capacity is unverified."
+  ]
+}
